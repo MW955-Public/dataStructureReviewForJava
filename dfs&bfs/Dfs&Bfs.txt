@@ -1,0 +1,19 @@
+Leetcode 78
+
+Solution1: BFS, O(n*2^n), O(2^n)
+public List<List<Integer>> subsets(int[] nums) {
+         List<List<Integer>> fin = new ArrayList<>();
+         if(nums == null || nums.length == 0) return fin;
+         //BFS solution
+         fin.add(new ArrayList<>());
+         int size = 0;
+         for(int n:nums){
+             size = fin.size();
+             for(int m = 0; m < size; m++){
+                 List<Integer> set = new ArrayList<>(fin.get(m));
+                 set.add(n);
+                 fin.add(set);
+             }
+         }
+         return fin;
+     }
